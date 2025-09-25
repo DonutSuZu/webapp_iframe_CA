@@ -15,43 +15,41 @@
       max-width: 900px;
       margin: 0 auto;
     }
-    
-    /* --- ここから追加したスタイル --- */
-
-    /* イベントのデフォルトの背景色や枠線を消して、文字だけ見えるようにする */
     .fc-daygrid-event {
       background-color: transparent !important;
       border: none !important;
     }
-    /* イベント内容をセルの中央に配置する */
     .fc-event-main {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
     }
-
-    /* イベント全体のスタイル（中央揃え、赤色、太字） */
     .custom-event {
       text-align: center;
       color: red;
       font-weight: bold;
-      line-height: 1.4; /* 行の高さを調整 */
+      line-height: 1.4;
     }
-    /* 「×」マークのスタイル（大きく表示） */
     .event-x {
-      font-size: 2.5em; /* 文字サイズを大きく */
-      display: block;   /* 改行して表示 */
+      font-size: 2.5em;
+      display: block;
     }
-    /* 「よやくあり」テキストのスタイル */
     .event-text {
       font-size: 0.9em;
       display: block;
     }
-    /* 時間表示のスタイル */
     .event-time {
       font-size: 1em;
       display: block;
+    }
+
+    /* ▼▼▼ 変更点(1): カレンダー下部の注釈用のスタイルを追加 ▼▼▼ */
+    .calendar-legend {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #666;
     }
   </style>
 </head>
@@ -59,6 +57,9 @@
 <body>
   <h1>予約状況カレンダー</h1>
   <div id="calendar"></div>
+
+  <div class="calendar-legend">× = Reservations available</div>
+
 
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
 
@@ -76,19 +77,15 @@
         },
         events: 'https://script.google.com/macros/s/AKfycbySPldNfVnvQ3NQBSkuPxD0OiclK4itwWwrB5L794Auz9Td2wkxpONp8HRpjc4WBBM/exec',
         
-        // --- ★★★ここが修正点です★★★ ---
-        // 画像のイメージに合わせてイベントの表示内容を書き換える
         eventContent: function(arg) {
           const timeText = arg.timeText;
 
-          // 画像のイメージに合わせたHTMLを組み立てる
           let customHtml = `
             <div class="custom-event">
               <span class="event-x">×</span>
-              <span class="event-text">よやくあり</span>
+              <span class="event-text">予約あり</span>
           `;
 
-          // 時間データがある場合のみ、時間を表示する
           if (timeText) {
             customHtml += `<span class="event-time">${timeText}</span>`;
           }
