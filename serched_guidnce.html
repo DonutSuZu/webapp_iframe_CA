@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saikoya Stays - 提携先の一覧</title>
-    <style>
-        /* CSS: ここにデザインを記述します */
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   Saikoya Stays - 提携先の宿一覧
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+   /* CSS: ここにデザインを記述します */
 
         /* 基本スタイル */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            /* ▼ ここを変更 ▼ フォントを指定 */
+            font-family: 'Noto Serif JP', serif;
             margin: 0;
-            padding: 0; /* paddingをリセット */
+            padding: 0;
             background-color: #f8f9fa;
             color: #212529;
         }
+
+        /* (他のCSSは変更なしのため省略) */
 
         .container {
             max-width: 1140px;
@@ -26,21 +34,21 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 400px; /* カルーセルの高さを設定 */
+            height: 400px;
             overflow: hidden;
-            margin-bottom: 40px; /* カルーセルと下のコンテンツの間にスペース */
-            background-color: #333; /* 画像がない場合の背景色 */
+            margin-bottom: 40px;
+            background-color: #333;
         }
 
         .carousel-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 画像がコンテナに合わせて拡大縮小 */
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out; /* フェードイン・アウト */
+            transition: opacity 1.5s ease-in-out;
         }
 
         .carousel-image.active {
@@ -60,24 +68,27 @@
             align-items: center;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)); /* テキストを見やすくするためのオーバーレイ */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
         }
 
         .carousel-overlay h2 {
-            font-size: 6vw; /* 画面幅に応じて調整 */
+            /* ▼ ここを変更 ▼ 英語用のフォントを指定 */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6vw;
             margin: 0;
-            font-weight: bold;
+            font-weight: 700; /* 太字 */
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .carousel-overlay p {
-            font-size: 3vw; /* 画面幅に応じて調整 */
+            /* ▼ ここを変更 ▼ 英語用のフォントを指定 */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3vw;
             margin-top: 10px;
-            font-weight: 300;
+            font-weight: 400; /* 通常の太さ */
         }
-
-        /* スマホ用フォントサイズ調整 */
+        
         @media (max-width: 600px) {
             .carousel-overlay h2 {
                 font-size: 10vw;
@@ -86,15 +97,14 @@
                 font-size: 5vw;
             }
             .carousel-container {
-                height: 250px; /* スマホでのカルーセルの高さを調整 */
+                height: 250px;
             }
         }
 
-
-        /* ヘッダー部分 (カルーセル下の"提携先の宿一覧"は削除) */
+        /* ヘッダー部分 */
         .header {
             margin-bottom: 30px;
-            text-align: center; /* 中央寄せ */
+            text-align: center;
         }
         .header h1 {
             font-size: 28px;
@@ -141,14 +151,14 @@
             box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
         }
 
-        /* 宿のリスト (グリッドレイアウト) */
+        /* 宿のリスト */
         #accommodation-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
         }
 
-        /* 各宿のアイテム（カードデザイン） */
+        /* 各宿のアイテム */
         .accommodation-item {
             display: flex;
             flex-direction: column;
@@ -179,9 +189,12 @@
         }
 
         .accommodation-info h3 {
+            /* ▼ ここを変更 ▼ 英語用のフォントを指定 */
+            font-family: 'Cormorant Garamond', serif;
             margin: 0 0 10px 0;
-            font-size: 20px;
+            font-size: 22px; /* 少し大きく調整 */
             color: #343a40;
+            font-weight: 700;
         }
 
         .location {
@@ -232,102 +245,77 @@
             background-color: #0b5ed7;
             border-color: #0a58ca;
         }
-    </style>
-</head>
-<body>
-
-    <div class="carousel-container">
-        <img class="carousel-image active" src="https://images.unsplash.com/photo-1532884928231-ef40895eb654?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8Nnx8JUU3JUFCJUI5fGVufDB8fHx8MTc1NzU1NDYzM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="風景写真1">
-        <img class="carousel-image" src="https://images.unsplash.com/photo-1724146039923-5ecea35150dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8MXx8JUU2JTlEJUJFfGVufDB8fHx8MTc1NzU1NDkzNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="風景写真2">
-        <img class="carousel-image" src="https://images.unsplash.com/photo-1741084681431-d226c8512420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8M3x8JUU2JUEyJTg1fGVufDB8fHx8MTc1NzU1NDU0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="風景写真3">
-        
-        <div class="carousel-overlay">
-            <h2>Saikoya</h2>
-            <p>Stays</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <header class="header">
-            <h1>提携先の宿一覧</h1>
-            <p>エリア別の提携先を選んで、詳細や予約ページにお進みください。</p>
-        </header>
-
-        <nav class="town-nav">
-            <button class="town-btn" data-town="hakuba">白馬</button>
-            <button class="town-btn" data-town="karuizawa">軽井沢</button>
-            <button class="town-btn" data-town="nagano">長野市</button>
-            <button class="town-btn" data-town="nozawa">野沢温泉</button>
-        </nav>
-
-        <div id="accommodation-list">
-
-            <article class="accommodation-item" data-town="nagano">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="ホテルの写真">
-                <div class="accommodation-info">
-                    <h3>Nagano City Garden Hotel</h3>
-                    <div class="location">
-                        <svg viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                        <span>長野県長野市</span>
-                    </div>
-                    <div class="card-buttons">
-                        <a href="#" class="card-btn detail-btn">詳細を見る</a>
-                        <a href="#" class="card-btn booking-btn">予約する</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="accommodation-item" data-town="hakuba">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="ホテルの写真">
-                <div class="accommodation-info">
-                    <h3>白馬マウンテンロッジ</h3>
-                    <div class="location">
-                        <svg viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                        <span>長野県北安曇郡白馬村</span>
-                    </div>
-                    <div class="card-buttons">
-                        <a href="#" class="card-btn detail-btn">詳細を見る</a>
-                        <a href="#" class="card-btn booking-btn">予約する</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="accommodation-item" data-town="karuizawa">
-                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="ホテルの写真">
-                <div class="accommodation-info">
-                    <h3>リゾートホテル軽井沢</h3>
-                    <div class="location">
-                        <svg viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                        <span>長野県北佐久郡軽井沢町</span>
-                    </div>
-                    <div class="card-buttons">
-                        <a href="#" class="card-btn detail-btn">詳細を見る</a>
-                        <a href="#" class="card-btn booking-btn">予約する</a>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="accommodation-item" data-town="nagano">
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="ホテルの写真">
-                <div class="accommodation-info">
-                    <h3>善光寺表参道 旅館つかさ</h3>
-                    <div class="location">
-                        <svg viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                        <span>長野県長野市</span>
-                    </div>
-                    <div class="card-buttons">
-                        <a href="#" class="card-btn detail-btn">詳細を見る</a>
-                        <a href="#" class="card-btn booking-btn">予約する</a>
-                    </div>
-                </div>
-            </article>
-
-            </div>
-    </div>
-
-    <script>
-        // JavaScript: ここにボタンを押したときの動きとカルーセルの動きを記述します
-        document.addEventListener('DOMContentLoaded', function() {
+  </style>
+ </head>
+ <body>
+  <div class="carousel-container">
+   <img alt="風景写真1" class="carousel-image active" src="https://storage.googleapis.com/studio-design-asset-files/projects/BVqX3KEKOR/s-1567x1044_v-fms_webp_33afe234-32cf-40d7-bbed-93116826c30b_small.webp">
+   <img alt="風景写真2" class="carousel-image" src="https://storage.googleapis.com/studio-design-asset-files/projects/BVqX3KEKOR/s-500x342_webp_fa6b67a6-9505-4846-ae2d-dd6c2260579e.webp">
+   <img alt="風景写真3" class="carousel-image" src="https://storage.googleapis.com/studio-design-asset-files/projects/BVqX3KEKOR/s-500x333_webp_fc9f201f-86e5-4510-8477-58197fb011ec.webp">
+   <img alt="風景写真4" class="carousel-image" src="https://storage.googleapis.com/studio-design-asset-files/projects/BVqX3KEKOR/s-539x360_webp_30b13068-1010-4b8f-982e-fe2c42c3f071.webp">
+   <img alt="風景写真5" class="carousel-image" src="https://storage.googleapis.com/studio-design-asset-files/projects/BVqX3KEKOR/s-540x360_webp_85ac77a1-58fb-476d-9761-6953828f068a.webp">
+   <div class="carousel-overlay">
+    <h2>
+     Saikoya
+    </h2>
+    <p>
+     Stays
+    </p>
+   </div>
+  </div>
+  <div class="container">
+   <header class="header">
+    <h1>
+     提携先の宿一覧
+    </h1>
+    <p>
+     エリア別の提携先を選んで、詳細や予約ページにお進みください。
+    </p>
+   </header>
+   <nav class="town-nav">
+    <button class="town-btn" data-town="hakuba">
+     白馬
+    </button>
+    <button class="town-btn" data-town="karuizawa">
+     軽井沢
+    </button>
+    <button class="town-btn" data-town="nagano">
+     長野市
+    </button>
+    <button class="town-btn" data-town="nozawa">
+     野沢温泉
+    </button>
+   </nav>
+   <div id="accommodation-list">
+    <article class="accommodation-item" data-town="nagano">
+     <img alt="ホテルの写真" src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ3NTA0NDc0Nzk0NzU5MzI0Mw==/original/16797fdf-7b94-4cf0-8eaf-7cb6bc930274.jpeg?im_w=1200">
+     <div class="accommodation-info">
+      <h3>
+       道-MICHI-
+      </h3>
+      <div class="location">
+       <svg viewbox="0 0 16 16">
+        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z">
+        </path>
+       </svg>
+       <span>
+        長野県長野市
+       </span>
+      </div>
+      <div class="card-buttons">
+       <a class="card-btn detail-btn" href="https://www.airbnb.jp/rooms/1475044747947593243?guests=1&adults=1&s=67&unique_share_id=bc06030f-e04f-4cdb-9a7d-11f2c71ced50&source_impression_id=p3_1758944808_P38smwlCK0DKSkkT">
+        詳細を見る
+       </a>
+       <a class="card-btn booking-btn" href="https://ensaikoya.info/LP_MITIo1JPZNOINDEX-EN-1">
+        予約する
+       </a>
+      </div>
+     </div>
+    </article>
+   </div>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
             
             // --- カルーセルのJavaScript ---
             const carouselImages = document.querySelectorAll('.carousel-image');
@@ -339,14 +327,12 @@
                 carouselImages[currentImageIndex].classList.add('active');
             }
 
-            // 3秒ごとに画像を切り替える
             setInterval(showNextImage, 3000); 
 
             // --- 宿フィルタリングのJavaScript ---
             const townButtons = document.querySelectorAll('.town-btn');
             const accommodationItems = document.querySelectorAll('.accommodation-item');
             
-            // 宿をフィルタリングする関数
             function filterAccommodations(targetTown) {
                 accommodationItems.forEach(function(item) {
                     if (item.dataset.town === targetTown) {
@@ -357,7 +343,6 @@
                 });
             }
 
-            // 各ボタンにクリックイベントを設定
             townButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
                     townButtons.forEach(btn => btn.classList.remove('active'));
@@ -368,13 +353,11 @@
                 });
             });
 
-            // 初期表示の設定: 「長野市」をデフォルトで選択状態にする
             const initialButton = document.querySelector('.town-btn[data-town="nagano"]');
             if (initialButton) {
                 initialButton.click();
             }
         });
-    </script>
-
-</body>
+  </script>
+ </body>
 </html>
